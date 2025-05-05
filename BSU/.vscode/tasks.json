@@ -1,0 +1,54 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "g++ build",
+            "command": "/usr/bin/g++",
+            "args": [
+                "-g",
+                "-std=c++11",
+                "-DCONNECTIONS_ACCURATE_SIM",
+                "-DSC_INCLUDE_DYNAMIC_PROCESSES",
+                "/root/matchlib_toolkit/examples/05_push_pop/testbench.cpp",
+                "-L$SYSTEMC_HOME/lib-linux64",
+                "-I/root/matchlib_toolkit/examples/05_push_pop",
+                "-I/root/matchlib_toolkit/examples/05_push_pop/../../include",
+                "-I$SYSTEMC_HOME/include",
+                "-I$SYSTEMC_HOME/src",
+                "-I$CONNECTIONS_HOME/include",
+                "-I$MATCHLIB_HOME/cmod/include",
+                "-I$BOOST_HOME/include",
+                "-I$RAPIDJSON_HOME/include",
+                "-I$AC_TYPES/include",
+                "-I$AC_SIMUTILS/include",
+                "-lsystemc",
+                "-lpthread",
+                "-o",
+                "/root/matchlib_toolkit/examples/05_push_pop/sim_sc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "type": "shell",
+            "label": "run",
+            "command": "./sim_sc ",
+            "dependsOn": [
+                "g++ build"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "type": "shell",
+            "label": "trace",
+            "command": "gtkwave trace.vcd",
+            "dependsOn": [
+                "run"
+            ],
+            "problemMatcher": []
+        }
+    ]
+}
