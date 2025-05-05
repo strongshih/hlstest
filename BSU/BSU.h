@@ -48,9 +48,6 @@ private:
 #pragma pipeline_stall_mode flush
     while (1) {
       wait();
-      // TODO:
-      // Change this to bitonic sort hardware: https://en.wikipedia.org/wiki/Bitonic_sorter
-
       BSU_In_Type t = in1.Pop();
       BSU_Out_Type temp;
       for (int i = 0; i < N; i=i+1) {
