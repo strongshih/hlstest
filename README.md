@@ -2,7 +2,7 @@
 ## Install docker
 
 ```bash
-apt-get install -y docker nvidia-docker2 // google how to install it
+apt-get install -y docker // google how to install it
 systemctl restart docker
 ```
 
@@ -11,8 +11,8 @@ systemctl restart docker
 - Setup
 
 ```bash
-git clone https://github.com/strongshih/codetest.git
-cd codetest/
+git clone https://github.com/strongshih/hlstest.git
+cd hlstest/
 sudo docker build -t test_dev .
 sudo docker run -p 12345:22 --name=test -it -v $PWD:/root/test_dev test_dev /bin/bash
 ```
